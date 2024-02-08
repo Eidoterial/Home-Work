@@ -26,7 +26,7 @@ class UserData:
 
                 else:
                     print("Ім'я введено некоректно")
-                    Suport_func.sleep(1)
+                    Suport_func.sleep(1.5)
                     Suport_func.clear()
 
             self.user_name = test_name
@@ -38,15 +38,13 @@ class UserData:
 
                 test_month = Suport_func.str_blocker("Впишіть ваш номер місяця народження",
                                                      "Приклад: 6; 3; 11",
-                                                     "Дані вписані коректно",
-                                                     True,
-                                                     True )
+                                                     "Дані вписані коректно",)
 
                 if Chud.check_user_month(test_month): break
 
                 else:
                     print("Місяць введено некоректно")
-                    Suport_func.sleep(1)
+                    Suport_func.sleep(1.5)
                     Suport_func.clear()
 
             self.user_month = test_month
@@ -57,15 +55,13 @@ class UserData:
 
                 test_year = Suport_func.str_blocker("Впишіть ваш рік народження",
                                                      "Приклад: 2000; 1987; 2011",
-                                                     "Дані вписані коректно",
-                                                     True,
-                                                     True)
+                                                     "Дані вписані коректно",)
 
                 if Chud.check_user_year(test_year): break
 
                 else:
                     print("Рік введено некоректно")
-                    Suport_func.sleep(1)
+                    Suport_func.sleep(1.5)
                     Suport_func.clear()
 
             self.user_year = test_year
@@ -86,7 +82,7 @@ class UserData:
             print("Ви не входите в віковий діапазон")
             print("Спробуйте ще раз")
 
-            Suport_func.sleep(1)
+            Suport_func.sleep(1.5)
             Suport_func.clear()
 
             return False
