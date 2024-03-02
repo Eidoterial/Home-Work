@@ -1,35 +1,61 @@
 import tkinter
 
 
+class Variables:
+
+    def __init__(self):
+        self.select_number_input = tkinter.StringVar()
+        self.result_calculate = tkinter.StringVar(value="0")
 
 class Buttons:
-    def __init__(self, fraim_random_num_generate, fraim_user_input_number):
-        self.generate_random_num = tkinter.Button(fraim_random_num_generate, text="GENERATE", font=(None, 8), relief="flat")
+    def __init__(self, input_number_frame, func, var, input_operation_frame, var2, funct2):
+        self.numbers_buttons = []
+        self.operators = []
+        self.numbers_buttons.append(tkinter.Button(input_number_frame, text=f"{1}", width=6, height=1, command=lambda :func(var, str(1))))
+        self.numbers_buttons.append(
+            tkinter.Button(input_number_frame, text=f"{2}", width=6, height=1, command=lambda: func(var, str(2))))
+        self.numbers_buttons.append(
+            tkinter.Button(input_number_frame, text=f"{3}", width=6, height=1, command=lambda: func(var, str(3))))
+        self.numbers_buttons.append(
+            tkinter.Button(input_number_frame, text=f"{4}", width=6, height=1, command=lambda: func(var, str(4))))
+        self.numbers_buttons.append(
+            tkinter.Button(input_number_frame, text=f"{5}", width=6, height=1, command=lambda: func(var, str(5))))
+        self.numbers_buttons.append(
+            tkinter.Button(input_number_frame, text=f"{6}", width=6, height=1, command=lambda: func(var, str(6))))
+        self.numbers_buttons.append(
+            tkinter.Button(input_number_frame, text=f"{7}", width=6, height=1, command=lambda: func(var, str(7))))
+        self.numbers_buttons.append(
+            tkinter.Button(input_number_frame, text=f"{8}", width=6, height=1, command=lambda: func(var, str(8))))
+        self.numbers_buttons.append(
+            tkinter.Button(input_number_frame, text=f"{9}", width=6, height=1, command=lambda: func(var, str(9))))
+        self.numbers_buttons.append(
+            tkinter.Button(input_number_frame, text=f"{0}", width=6, height=1,command=lambda: func(var, str(0))))
 
-        self.try_user_num = tkinter.Button(fraim_user_input_number, text="TRY", font=(None, 15), relief="flat")
-        self.restart_game = tkinter.Button(fraim_user_input_number, text="RESTART", font=(None, 10), relief="flat")
-        self.exit_game = tkinter.Button(fraim_user_input_number, text="EXIT", font=(None, 10), relief="flat")
+        self.operators.append(tkinter.Button(input_operation_frame, text="+", width=6, height=1,
+                              command=lambda: funct2(var, var2, "+")))
+        self.operators.append(tkinter.Button(input_operation_frame, text="-", width=6, height=1,
+                              command=lambda: funct2(var, var2, "-")))
+        self.operators.append(tkinter.Button(input_operation_frame, text="*", width=6, height=1,
+                              command=lambda: funct2(var, var2, "*")))
+        self.operators.append(tkinter.Button(input_operation_frame, text="/", width=6, height=1,
+                              command=lambda: funct2(var, var2, "/")))
+        self.operators.append(tkinter.Button(input_operation_frame, text="=", width=6, height=1,
+                              command=lambda: funct2(var, var2, "=")))
+        self.operators.append(tkinter.Button(input_operation_frame, text="R", width=6, height=1,
+                                             command=lambda: funct2(var, var2, "R")))
 
 class Entrys:
-    def __init__(self, fraim_random_num_generate, fraim_user_input_number):
-        self.entry_min_num = tkinter.Entry(fraim_random_num_generate, width=10)
-        self.entry_max_num = tkinter.Entry(fraim_random_num_generate, width=10)
-
-        self.entry_user_num = tkinter.Entry(fraim_user_input_number, width=30, font=(None, 20))
+    def __init__(self, calculate_main_display_frame, select_number_input):
+        self.display_calculate = tkinter.Entry(calculate_main_display_frame, width=10, font=(None, 30), textvariable=select_number_input)
 
 
 class Labeles:
     def __init__(self, fraim_random_num_generate, fraim_user_input_number):
-        self.text_info_min = tkinter.Label(fraim_random_num_generate, text="Min number-->", font=(None, 8), relief="sunken", background="red")
-        self.text_info_max = tkinter.Label(fraim_random_num_generate, text="<--Max number", font=(None, 8), relief="sunken", background="red")
-
-        self.status_info_game = tkinter.StringVar(fraim_user_input_number, value="Введіть мінімальне та максимальне число")
-        self.raunds = tkinter.StringVar(fraim_user_input_number, value="Raund: 0")
-
-        self.text_info_game = tkinter.Label(fraim_user_input_number, textvariable=self.status_info_game, font=(None, 10), background="green", relief="groove")
-        self.text_info_raund = tkinter.Label(fraim_user_input_number, textvariable=self.raunds, font=(None, 10), background="green", relief="groove")
+        pass
 
 class Frames:
     def __init__(self, main_display):
-        self.fraim_random_num_generate = tkinter.Frame(main_display, width=400, height=50, background="red")
-        self.fraim_user_input_number = tkinter.Frame(main_display, width=500, height=300, background="blue")
+        self.calculate_main_display_frame = tkinter.Frame(main_display, background="red")
+        self.zone_input_calculate_frame = tkinter.Frame(main_display, background="blue")
+        self.input_number_frame = tkinter.Frame(self.zone_input_calculate_frame, background="green")
+        self.input_operation_frame = tkinter.Frame(self.zone_input_calculate_frame, background="cyan")
