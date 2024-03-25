@@ -3,67 +3,73 @@ import tkinter
 
 class Variables:
     def __init__(self):
-        self.color_chenges = tkinter.StringVar(value="red")
+        self.score = 0 # Total score
 
-        self.age_status_car_v = tkinter.StringVar()
-        self.continent_produs_car_v = tkinter.StringVar()
-        self.mark_car_v = tkinter.StringVar()
-        self.type_motor_v = tkinter.StringVar()
-        self.capacity_motor_v = tkinter.StringVar()
+        self.quest_correct = [tkinter.StringVar(value=None),
+                                tkinter.StringVar(value=None),
+                                tkinter.StringVar(value=None),
+                                tkinter.StringVar(value=None),
+                                tkinter.StringVar(value=None),
+                                tkinter.StringVar(value=None),
+                                tkinter.StringVar(value=None)]
+
+        self.infor = tkinter.StringVar(value="""Правила прості
+        За кожну правельну відповідь дається 1 очко
+        В загальному є 7 питань
+        Можливість подивитися результат
+        Можливість збереження результату в txt файл""")
+
+
 
 class Buttons:
-    def __init__(self, result_car_fr, func):
-        self.res = tkinter.Button(result_car_fr, text="Результат", command=func)
+    def __init__(self, main_display, back_func):
+        self.backer = tkinter.Button(main_display, text="Далі", command=back_func)
 
 class RButon:
-    def __init__(self, label_frames, variables):
+    def __init__(self, main_display, variab):
 
-        # Вік машини
-        self.r_b_age_1 = tkinter.Radiobutton(label_frames.age_status_car, text="до 5", value="до 5",
-                                             variable=variables.age_status_car_v, background="burlywood4")
-        self.r_b_age_2 = tkinter.Radiobutton(label_frames.age_status_car, text="6-10", value="6-10",
-                                             variable=variables.age_status_car_v, background="burlywood4")
-        self.r_b_age_3 = tkinter.Radiobutton(label_frames.age_status_car, text="11-15", value="11-15",
-                                             variable=variables.age_status_car_v, background="burlywood4")
-        self.r_b_age_4 = tkinter.Radiobutton(label_frames.age_status_car, text="більше 15", value="більше 15",
-                                             variable=variables.age_status_car_v, background="burlywood4")
 
-        # Континент розробника
-        self.r_b_contin_1 = tkinter.Radiobutton(label_frames.continent_produs_car, text="Західна Європа", value="Західна Європа",
-                                             variable=variables.continent_produs_car_v, background="burlywood4")
-        self.r_b_contin_2 = tkinter.Radiobutton(label_frames.continent_produs_car, text="Східна Європа", value="Східна Європа",
-                                             variable=variables.continent_produs_car_v, background="burlywood4")
-        self.r_b_contin_3 = tkinter.Radiobutton(label_frames.continent_produs_car, text="Азія", value="Азія",
-                                             variable=variables.continent_produs_car_v, background="burlywood4")
-        self.r_b_contin_4 = tkinter.Radiobutton(label_frames.continent_produs_car, text="Америка", value="Америка",
-                                             variable=variables.continent_produs_car_v, background="burlywood4")
+        self.mask =[tkinter.Radiobutton(main_display),
+                        tkinter.Radiobutton(main_display),
+                        tkinter.Radiobutton(main_display),
+                        tkinter.Radiobutton(main_display)]
 
-        # Марка машини
-        self.r_b_mark_1 = tkinter.Radiobutton(label_frames.mark_car, text="BMV", value="BMV",
-                                                variable=variables.mark_car_v, background="burlywood4")
-        self.r_b_mark_2 = tkinter.Radiobutton(label_frames.mark_car, text="Toyota", value="Toyota",
-                                                variable=variables.mark_car_v, background="burlywood4")
-        self.r_b_mark_3 = tkinter.Radiobutton(label_frames.mark_car, text="Nisan", value="Nisan",
-                                                variable=variables.mark_car_v, background="burlywood4")
-        self.r_b_mark_4 = tkinter.Radiobutton(label_frames.mark_car, text="Audi", value="Audi",
-                                                variable=variables.mark_car_v, background="burlywood4")
+        self.mask[0].config()
 
-        # Тип двигуна
-        self.r_b_type_mtr_1 = tkinter.Radiobutton(label_frames.type_motor, text="Дизель", value="Дизель",
-                                              variable=variables.type_motor_v, background="burlywood4")
-        self.r_b_type_mtr_2 = tkinter.Radiobutton(label_frames.type_motor, text="Бендзин", value="Бендзин",
-                                              variable=variables.type_motor_v, background="burlywood4")
+        self.quest = [[tkinter.Radiobutton(main_display, text="3", variable=variab.quest_correct[0], value="Uncorrect1"),
+                        tkinter.Radiobutton(main_display, text="22", variable=variab.quest_correct[0], value="Uncorrect2"),
+                        tkinter.Radiobutton(main_display, text="Риба", variable=variab.quest_correct[0], value="Uncorrect3"),
+                        tkinter.Radiobutton(main_display, text="4", variable=variab.quest_correct[0], value="Correct")],
 
-        # Ємкість двигуна
-        self.r_b_capas_mtr_1 = tkinter.Radiobutton(label_frames.capacity_motor, text="Менше 1200", value="Менше 1200",
-                                              variable=variables.capacity_motor_v, background="burlywood4")
-        self.r_b_capas_mtr_2 = tkinter.Radiobutton(label_frames.capacity_motor, text="1200-1500", value="1200-1500",
-                                              variable=variables.capacity_motor_v, background="burlywood4")
-        self.r_b_capas_mtr_3 = tkinter.Radiobutton(label_frames.capacity_motor, text="1501-2200", value="1501-2200",
-                                              variable=variables.capacity_motor_v, background="burlywood4")
-        self.r_b_capas_mtr_4 = tkinter.Radiobutton(label_frames.capacity_motor, text="Більше 2200", value="Більше 2200",
-                                              variable=variables.capacity_motor_v, background="burlywood4")
+                      [tkinter.Radiobutton(main_display, text="4", variable=variab.quest_correct[1], value="Correct"),
+                        tkinter.Radiobutton(main_display, text="В квадрату немає сторін", variable=variab.quest_correct[1], value="Uncorrect1"),
+                        tkinter.Radiobutton(main_display, text="6", variable=variab.quest_correct[1], value="Uncorrect2"),
+                        tkinter.Radiobutton(main_display, text="8", variable=variab.quest_correct[1], value="Uncorrect3")],
 
+                      [tkinter.Radiobutton(main_display, text="Тому що ми хочемо митися", variable=variab.quest_correct[2], value="Uncorrect1"),
+                        tkinter.Radiobutton(main_display, text="Підстава від природи", variable=variab.quest_correct[2], value="Uncorrect2"),
+                        tkinter.Radiobutton(main_display, text="Це механізм терморегуляції організму", variable=variab.quest_correct[2], value="Correct"),
+                        tkinter.Radiobutton(main_display, text="Це механізм відеорегуляції організму", variable=variab.quest_correct[2], value="Uncorrect3")],
+
+                      [tkinter.Radiobutton(main_display, text="3,1415926535", variable=variab.quest_correct[3], value="Correct"),
+                        tkinter.Radiobutton(main_display, text="3,1415906535", variable=variab.quest_correct[3], value="Uncorrect1"),
+                        tkinter.Radiobutton(main_display, text="3,1415936535", variable=variab.quest_correct[3], value="Uncorrect2"),
+                        tkinter.Radiobutton(main_display, text="3,1415946535", variable=variab.quest_correct[3], value="Uncorrect3")],
+
+                      [tkinter.Radiobutton(main_display, text="Існують літаючі дерева", variable=variab.quest_correct[4], value="Uncorrect1"),
+                        tkinter.Radiobutton(main_display, text="Корм для собак роблять з котів", variable=variab.quest_correct[4], value="Uncorrect2"),
+                        tkinter.Radiobutton(main_display, text="Деякі папугаї можуть каркати", variable=variab.quest_correct[4], value="Correct"),
+                        tkinter.Radiobutton(main_display, text="Не всі коні єдинороги", variable=variab.quest_correct[4], value="Uncorrect3")],
+
+                      [tkinter.Radiobutton(main_display, text="Ви народилися сьогодні", variable=variab.quest_correct[5], value="Uncorrect1"),
+                        tkinter.Radiobutton(main_display, text="Ви народитеся завтра", variable=variab.quest_correct[5], value="Uncorrect2"),
+                        tkinter.Radiobutton(main_display, text="Ви народилися стільки років тому, скільки вам років", variable=variab.quest_correct[5], value="Correct"),
+                        tkinter.Radiobutton(main_display, text="Ви не народжувалися", variable=variab.quest_correct[5], value="Uncorrect3")],
+
+                      [tkinter.Radiobutton(main_display, text="Так", variable=variab.quest_correct[6], value="Uncorrect1"),
+                        tkinter.Radiobutton(main_display, text="Звісно", variable=variab.quest_correct[6], value="Uncorrect2"),
+                        tkinter.Radiobutton(main_display, text="Однозначно", variable=variab.quest_correct[6], value="Uncorrect3"),
+                        tkinter.Radiobutton(main_display, text="Де я?", variable=variab.quest_correct[6], value="Correct")]]
 
 class Lister:
     def __init__(self):
@@ -74,33 +80,49 @@ class Entrys:
         pass
 
 class Texts:
-    def __init__(self, result_car_fr):
-        self.result_show = tkinter.Text(result_car_fr)
-
-class Labeles:
     def __init__(self):
         pass
 
+class Labeles:
+    def __init__(self, main_display):
+        self.mask_l = tkinter.Label(main_display)
+
+        self.quest_label = [tkinter.Label(main_display, text="2 + 2"),
+                            tkinter.Label(main_display, text="Скільки сторін у квадрату"),
+                            tkinter.Label(main_display, text="Чому люди потіють"),
+                            tkinter.Label(main_display, text="Виберіть правельне число ПІ"),
+                            tkinter.Label(main_display, text="Оберіть правельне твердження"),
+                            tkinter.Label(main_display, text="Виберіть правельну відповідь"),
+                            tkinter.Label(main_display, text="Вам сподобалося?)))"),]
+
 class SpinBox:
-    def __init__(self, car_info_selecter_fr, color_chenger, func):
-        self.lister = ["red", "blue", "green", "yellow", "black"]
-        self.color_spin = tkinter.Spinbox(car_info_selecter_fr, values=self.lister, textvariable=color_chenger, command=func, wrap=True)
+    def __init__(self):
+        pass
 
 
 class LabelFraims:
-    def __init__(self, car_info_selecter_fr):
-        self.status_car = tkinter.LabelFrame(car_info_selecter_fr, text="Виберіть бажаний статус машини", background="burlywood4")
-        self.age_status_car = tkinter.LabelFrame(car_info_selecter_fr, text="Виберіть бажаний вік машини", background="burlywood4")
-        self.continent_produs_car = tkinter.LabelFrame(car_info_selecter_fr, text="Континент виробника", background="burlywood4")
-
-        self.mark_car = tkinter.LabelFrame(car_info_selecter_fr, text="Марка машини", background="burlywood4")
-        self.type_motor = tkinter.LabelFrame(car_info_selecter_fr, text="Тип двигуна", background="burlywood4")
-
-        self.capacity_motor = tkinter.LabelFrame(car_info_selecter_fr, text="Об'єм двигуна", background="burlywood4")
+    def __init__(self):
+        pass
 
 class Frames:
-    def __init__(self, main_display, color_chenger):
-        self.car_info_selecter_fr = tkinter.Frame(main_display, background="bisque4")
-        self.result_car_fr = tkinter.Frame(main_display, background="burlywood3")
+    def __init__(self):
+        pass
 
-        self.colorest = tkinter.Frame(self.car_info_selecter_fr, background=color_chenger.get())
+
+
+class MenuIF:
+
+    def __init__(self, main_display, start_func, score_func, save_func):
+        self.main_menu_bar = tkinter.Menu(main_display)
+
+        self.starter = tkinter.Menu(self.main_menu_bar)
+        self.start = tkinter.Menu(self.starter)
+        self.starter.add_command(label="Почати тест", command=start_func)
+
+        main_display.config(menu = self.main_menu_bar)
+        self.main_menu_bar.add_cascade(label="Стартер",menu = self.starter)
+        self.main_menu_bar.add_command(label="Результат", command=score_func)
+        self.main_menu_bar.add_command(label="Зберегти результат", command=save_func)
+
+
+
